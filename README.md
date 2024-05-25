@@ -13,3 +13,9 @@ access.
 • Conducted successful login tests to validate 
 proper navigation to the dashboard page 
 upon login.
+
+#internetHirakou
+End to end Testing for
+ttps://the-internet.herokuapp.com/login
+.Implemented Selenium Webdriver with TestNg,using java Programming language & maven for efficient Test automation.
+. verified the login page, Select CheckBox,Handled alertBox & select CheckBox.
