@@ -1,0 +1,120 @@
+package internethirakou;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+public class Test3 {
+	WebDriver driver=new ChromeDriver();
+	//visit the link
+	@Test
+	public void Testcase1()
+	{
+		driver.get("https://the-internet.herokuapp.com/login");
+		driver.manage().window().maximize();
+	}
+	// with valid username and password & logout
+	@Test
+	public void Testcase2()
+	{
+		driver.findElement(By.id("username")).sendKeys("tomsmith");
+		driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
+		driver.findElement(By.tagName("i")).click();
+		
+		driver.findElement(By.cssSelector(".icon-2x.icon-signout")).click();
+		
+		
+	}
+	//with invalid username valid password
+	@Test
+	public void Testcase3()
+	{
+		driver.get("https://the-internet.herokuapp.com/login");
+		driver.findElement(By.id("username")).sendKeys("tomhith");
+		driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
+		driver.findElement(By.tagName("i")).click();
+		
+		driver.findElement(By.className("button secondary radius")).click();
+		
+		
+	}
+	@Test
+	public void Testcase4() throws InterruptedException
+	
+	{
+		Thread.sleep(2000);
+		driver.get("https://the-internet.herokuapp.com/login");
+		driver.findElement(By.id("username")).sendKeys("");
+		driver.findElement(By.id("password")).sendKeys("");
+		
+		driver.findElement(By.tagName("i")).click();
+		driver.findElement(By.className("button secondary radius")).click();
+		
+			
+	}
+	// alerts in website
+	@Test
+	public void Testcase5()
+	{
+driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+driver.findElement(By.cssSelector("button[onclick='jsAlert()']")).click();
+Alert alert=driver.switchTo().alert();
+alert.accept();
+	
+}
+	@Test
+	//alert  select  yes
+	public void Testcase6() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+		driver.findElement(By.cssSelector("button[onclick='jsConfirm()']")).click();
+		Alert alert=driver.switchTo().alert();
+		alert.accept();
+		
+		
+	}
+	@Test
+	//alert select no
+	public void Testcase7() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+		driver.findElement(By.cssSelector("button[onclick='jsConfirm()']")).click();
+		Alert alert1=driver.switchTo().alert();
+		alert1.dismiss();
+	}
+	@Test
+	//send key in alert
+	public void Testcase8() throws InterruptedException
+	{
+		Thread.sleep(2000);
+		driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+		driver.findElement(By.cssSelector("button[onclick='jsPrompt()']")).click();
+		Alert alert=driver.switchTo().alert();
+		Thread.sleep(2000);
+		alert.sendKeys("hyyy");
+		alert.accept();
+		
+		
+	}// download file
+	@Test
+	public void Testcase9()
+	{
+	driver.get("https://the-internet.herokuapp.com/download");
+	driver.findElement(By.linkText("newFile.txt")).click();
+	
+	}
+	//check box
+@Test
+public void Testcase10()
+
+{
+	driver.get("https://the-internet.herokuapp.com/checkboxes");
+	driver.findElement(By.xpath("(//input[@type='checkbox'])[1]")).click();
+}
+	
+	}
+	
+	
+	
+	
+	
